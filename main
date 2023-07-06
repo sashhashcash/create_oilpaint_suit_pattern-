@@ -1,0 +1,202 @@
+import numpy as np
+from hpgl import HPGL, Pen, Line, BezierCurve
+
+def create_oilpaint_suit_pattern():
+    hpgl = HPGL()
+
+    # Define the points and lines for each pattern piece
+    back_piece_points = [
+        (0, 0),
+        (0, 44.5),
+        (43, 44.5),
+        (43, 0)
+    ]
+
+    # Add control points for the curves in the back_piece
+    back_piece_control_points = [
+        (11, 44.5),
+        (11, 11),
+        (32, 11),
+        (32, 44.5)
+    ]
+
+    side_piece_points = [
+        (0, 0),
+        (0, 44.5),
+        (21.5, 44.5),
+        (21.5, 0)
+    ]
+
+    # Add control points for the curves in the side_piece
+    side_piece_control_points = [
+        (5, 44.5),
+        (5, 11),
+        (16.5, 11),
+        (16.5, 44.5)
+    ]
+
+    front_piece_points = [
+        (0,0),
+        (0, 44.5),
+        (43, 44.5),
+        (43, 21),
+        (39, 21),
+        (39, 28),
+        (43, 28),
+        (43, 0)
+    ]
+
+    # Add control points for the curves in the front_piece
+    front_piece_control_points = [
+        (11, 44.5),
+        (11, 11),
+        (32, 11),
+        (32, 44.5)
+    ]
+
+    oversleeve_piece_points = [
+        (0, 0),
+        (0, 63.5),
+        (32, 63.5),
+        (27.5, 31.75),
+        (32, 0)
+    ]
+
+    undersleeve_piece_points = [
+        (0, 0),
+        (0, 63.5),
+        (32, 63.5),
+        (27.5, 31.75),
+        (32, 0)
+    ]
+
+    undercollar_points = [
+        (0, 0),
+        (0, 7.8),
+        (42.5, 7.8),
+        (42.5, 0)
+    ]
+
+    undercollar_stand_points = [
+        (0, 0),
+        (0, 3.9),
+        (42.5, 3.9),
+        (42.5, 0)
+    ]
+
+    pocket_flap_points = [
+        (0, 0),
+        (0, 10),
+        (15, 10),
+        (15, 0)
+    ]
+
+    facing_points = [
+        (0, 0),
+        (0, 44.5),
+        (43, 44.5),
+        (43, 0)
+    ]
+
+    # Draw the pattern pieces
+    draw_back_piece(hpgl, back_piece_points, back_piece_control_points)
+    draw_side_piece(hpgl, side_piece_points, side_piece_control_points)
+    draw_front_piece(hpgl, front_piece_points, front_piece_control_points)
+    draw_oversleeve_piece(hpgl, oversleeve_piece_points)
+    draw_undersleeve_piece(hpgl, undersleeve_piece_points)
+draw_undercollar(hpgl, undercollar_points)
+draw_undercollar_stand(hpgl, undercollar_stand_points)
+draw_pocket_flap(hpgl, pocket_flap_points)
+draw_facing(hpgl, facing_points)
+
+return hpgl
+
+def draw_back_piece(hpgl, points, control_points):
+hpgl.add(Pen(1))
+for i in range(len(points)):
+start = points[i]
+end = points[(i + 1) % len(points)]
+hpgl.add(Line(start, end))
+
+for i in range(0, len(control_points), 2):
+    start = control_points[i]
+    end = control_points[i + 1]
+    hpgl.add(BezierCurve(start, end, control_points[i], control_points[i + 1]))
+
+def draw_side_piece(hpgl, points, control_points):
+hpgl.add(Pen(1))
+for i in range(len(points)):
+start = points[i]
+end = points[(i + 1) % len(points)]
+hpgl.add(Line(start, end))
+
+for i in range(0, len(control_points), 2):
+    start = control_points[i]
+    end = control_points[i + 1]
+    hpgl.add(BezierCurve(start, end, control_points[i], control_points[i + 1]))
+
+def draw_front_piece(hpgl, points, control_points):
+hpgl.add(Pen(1))
+for i in range(len(points)):
+start = points[i]
+end = points[(i + 1) % len(points)]
+hpgl.add(Line(start, end))
+
+for i in range(0, len(control_points), 2):
+    start = control_points[i]
+    end = control_points[i + 1]
+    hpgl.add(BezierCurve(start, end, control_points[i], control_points[i + 1]))
+
+
+def draw_oversleeve_piece(hpgl, points):
+hpgl.add(Pen(1))
+for i in range(len(points)):
+start = points[i]
+end = points[(i + 1) % len(points)]
+hpgl.add(Line(start, end))
+
+def draw_undersleeve_piece(hpgl, points):
+hpgl.add(Pen(1))
+for i in range(len(points)):
+start = points[i]
+end = points[(i + 1) % len(points)]
+hpgl.add(Line(start, end))
+
+def draw_undercollar(hpgl, points):
+hpgl.add(Pen(1))
+for i in range(len(points)):
+start = points[i]
+end = points[(i + 1) % len(points)]
+hpgl.add(Line(start, end))
+
+def draw_undercollar_stand(hpgl, points):
+hpgl.add(Pen(1))
+for i in range(len(points)):
+start = points[i]
+end = points[(i + 1) % len(points)]
+hpgl.add(Line(start, end))
+
+def draw_pocket_flap(hpgl, points):
+hpgl.add(Pen(1))
+for i in range(len(points)):
+start = points[i]
+end = points[(i + 1) % len(points)]
+hpgl.add(Line(start, end))
+
+def draw_facing(hpgl, points):
+hpgl.add(Pen(1))
+for i in range(len(points)):
+start = points[i]
+end = points[(i + 1) % len(points)]
+
+hpgl.add(Line(start, end))
+
+#Main function to execute the code
+def main():
+oilpaint_suit_pattern = create_oilpaint_suit_pattern()
+
+# Save the pattern to an HPGL file
+with open("oilpaint_suit_pattern.hpgl", "w") as f:
+    f.write(str(oilpaint_suit_pattern))
+if name == "main":
+main()
